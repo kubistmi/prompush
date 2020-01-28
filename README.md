@@ -1,8 +1,8 @@
 # Prompush
-This Rpackage is a simple wrapper to allow useRs to post job status to Prometheus.  
+This Rpackage is a simple wrapper to allow useRs to post job status to [Prometheus](https://github.com/prometheus/prometheus).  
 This publishing is done via pushgateway. An example follows:  
 
-```{r}
+```R
 library(prompush)
 
 # job took 25 minutes
@@ -10,10 +10,11 @@ status("database", "update", "exec_time_s", c("scope" = "full", "delete_strategy
 ```
 
 # Pushgateway
-One of the easiest ways to setup a Prometheus with Pushgateway, is to use docker (and docker-compose).  
+One of the easiest ways to setup a [Prometheus](https://github.com/prometheus/prometheus) with [Pushgateway](https://github.com/prometheus/pushgateway), is to use [docker](https://github.com/docker/docker-ce) 
+(and [docker-compose](https://github.com/docker/compose)).  
 This approach was tested with following definitions:  
 
-```{yaml}
+```YAML
 # docker-compose.yaml
 version: "3"
 
@@ -33,7 +34,7 @@ services:
     ports:
       - "9091:9091"
 ```
-```{yaml}
+```YAML
 # prometheus.yaml
 global:
   scrape_interval:     1m # how often to check the gateway
