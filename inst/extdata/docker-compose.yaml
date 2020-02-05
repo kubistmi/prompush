@@ -1,0 +1,17 @@
+version: "3"
+
+services:
+  prometheus:
+    image: prom/prometheus
+    restart: unless-stopped
+    user: root # dont you dare touch this!
+    ports:
+      - "9090:9090"
+    volumes:
+      - "./prometheus.yaml:/etc/prometheus/prometheus.yml:Z"
+
+  pushgateway:
+    image: prom/pushgateway
+    restart: unless-stopped
+    ports:
+      - "9091:9091"
